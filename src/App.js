@@ -7,6 +7,8 @@ function App() {
       <HomeScreen />
       <Advantages />
       <ProfitCalculation />
+      <Community />
+      <Modal />
       <NavBar />
     </React.Fragment>
   );
@@ -223,9 +225,21 @@ const ProfitCalculation = () => {
         <p className="text-secondary pt-1 mb-0">of size 101,4 GiB, k=32</p>
         <input type="range" class="form-range mt-4 mb-3" id="customRange1" />
         <div className="row">
-          <div className="col-6"></div>
-          <div className="col-6">
-            <select class="form-select" aria-label="PiB">
+          <div className="col-5 d-flex align-items-center">
+            <input
+              type="text"
+              className="form-control text-bold"
+              value="5595"
+            />
+            <span className="text-small text-secondary ms-1">Plots</span>
+          </div>
+          <div className="col-7 d-flex">
+            <input
+              type="text"
+              className="form-control text-bold"
+              value="0,541"
+            />
+            <select className="form-select  ms-1" aria-label="PiB">
               <option selected value="1">
                 PiB
               </option>
@@ -276,6 +290,98 @@ const ProfitCalculation = () => {
             </div>
           </div>
         </div>
+        <div className="text-align mt-3">
+          <a href="#" class="btn btn-green">
+            <img
+              src="/plus.png"
+              style={{
+                width: "24px",
+                verticalAlign: "middle",
+                marginRight: "12px",
+              }}
+            />
+            <span style={{ lineHeight: "24px", verticalAlign: "middle" }}>
+              Connect miner
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const Community = () => {
+  return (
+    <div className="container-fluid">
+      <div className="container pb-5">
+        <div className="row">
+          <div className="col-12">
+            <h1 className="h1-title">Community</h1>
+            <p className="mb-0">
+              Join 4745 members of the Chia farm community from 53 countries!
+            </p>
+            <div className="row pt-4">
+              <div
+                className="col-6"
+                style={{
+                  borderRight: "1px solid rgba(196, 196, 196, 0.2)",
+                }}
+              >
+                <a
+                  href="https://t.me/joinchat/zIGz5E00IV0wMTEy"
+                  className="community-link d-flex justify-content-center flex-column"
+                  target="_blank"
+                >
+                  <img height="40" src="./telegram.svg" />
+                  <div className="pt-3 text-center">Join Telegram</div>
+                </a>
+              </div>
+              <div className="col-6">
+                <a
+                  href="#"
+                  className="community-link d-flex justify-content-center flex-column"
+                  target="_blank"
+                >
+                  <img height="34" src="./discord.svg" />
+                  <div className="pt-4 text-center">Join Discord</div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const Modal = () => {
+  return (
+    <div id="connectModal" className="modal fade">
+      <div className="modal-dialog modal-fullscreen-sm-down">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div className="modal-body">
+            <div className="row">
+              <div className="col-12">
+                <h1 className="h1-title">Connect new&nbsp;miner</h1>
+              </div>
+            </div>
+          </div>
+          <div className="modal-footer text-center">
+            <a href="#" class="btn btn-green">
+              <span style={{ lineHeight: "24px", verticalAlign: "middle" }}>
+                Check connection
+              </span>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -284,7 +390,15 @@ const ProfitCalculation = () => {
 const NavBar = () => {
   const menus = [
     { icon: "", caption: "Home", link: "#home" },
-    { icon: "", caption: "Connect", link: "#connect" },
+    {
+      icon: "",
+      caption: "Connect",
+      link: null,
+      button: {
+        "data-bs-toggle": "modal",
+        "data-bs-target": "#connectModal",
+      },
+    },
     { icon: "", caption: "Calculator", link: "#calculator" },
     { icon: "", caption: "Community", link: "#community" },
   ];
@@ -299,12 +413,13 @@ const NavBar = () => {
     >
       <div class="container-fluid">
         <ul class="navbar-nav" style={{ width: "100%" }}>
-          {menus.map(({ icon, caption, link }) => (
+          {menus.map(({ icon, caption, link, button = {} }) => (
             <li class="nav-item text-center" style={{ flex: "1 1" }}>
               <a
                 class={`nav-link ${link === activeLink ? "active" : ""}`}
                 aria-current={caption}
-                href={link}
+                href={button ? null : link}
+                {...button}
               >
                 <div class="col-12">
                   <div className="navbar-icon">{icon}</div>

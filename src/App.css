@@ -116,6 +116,20 @@ input[type="range"]::-moz-range-track {
   padding-bottom: env(safe-area-inset-bottom);
 }
 
+.form-control {
+  border: 0;
+  border-radius: 24px;
+}
+
+.community-link {
+  color: #3aac59;
+  text-decoration: none;
+}
+
+.community-link img {
+  margin: 0 auto;
+}
+
 /* Mobile only */
 @media (max-width: 768px) {
   .homescreen-title {
