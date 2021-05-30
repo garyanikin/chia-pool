@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
+import ClipboardJS from "clipboard";
 import "./App.css";
 
 function App() {
   return (
-    <React.Fragment>
+    <div>
       <HomeScreen />
       <Advantages />
       <ProfitCalculation />
       <Community />
       <Modal />
       <NavBar />
-    </React.Fragment>
+    </div>
   );
 }
 
@@ -25,7 +26,7 @@ const HomeScreen = () => {
       }}
     >
       <div className="container">
-        <h1 className="h1-title">
+        <h1 className="h1-title" id="home">
           2 Simple Steps to&nbsp;Connect to&nbsp;the&nbsp;Pool
         </h1>
         <div className="row">
@@ -57,7 +58,8 @@ const HomeScreen = () => {
                         Enter our address in&nbsp;Chia&nbsp;client
                       </div>
                       <div className="card-subcontent">
-                        Pool <span className="text-bold">></span> Pool address
+                        Pool <span className="text-bold font-standart">></span>{" "}
+                        Pool address
                       </div>
                     </div>
                   </div>
@@ -118,7 +120,11 @@ const HomeScreen = () => {
                   className="col-12 text-center"
                   style={{ padding: "10px 24px 20px" }}
                 >
-                  <a href="#" class="btn btn-green">
+                  <button
+                    class="btn btn-green"
+                    data-bs-toggle="modal"
+                    data-bs-target="#connectModal"
+                  >
                     <img
                       src="/plus.png"
                       style={{
@@ -132,7 +138,7 @@ const HomeScreen = () => {
                     >
                       Connect miner
                     </span>
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
@@ -218,7 +224,7 @@ const ProfitCalculation = () => {
       }}
     >
       <div className="container">
-        <h1 className="h1-title mb-0">
+        <h1 className="h1-title mb-0" id="calculator">
           <span className="text-green">Profit</span> calculation
         </h1>
         <h4 className="text-bold pt-2 mb-0">Number of plots</h4>
@@ -291,7 +297,11 @@ const ProfitCalculation = () => {
           </div>
         </div>
         <div className="text-align mt-3">
-          <a href="#" class="btn btn-green">
+          <button
+            data-bs-toggle="modal"
+            data-bs-target="#connectModal"
+            class="btn btn-green"
+          >
             <img
               src="/plus.png"
               style={{
@@ -303,7 +313,7 @@ const ProfitCalculation = () => {
             <span style={{ lineHeight: "24px", verticalAlign: "middle" }}>
               Connect miner
             </span>
-          </a>
+          </button>
         </div>
       </div>
     </div>
@@ -316,7 +326,9 @@ const Community = () => {
       <div className="container pb-5">
         <div className="row">
           <div className="col-12">
-            <h1 className="h1-title">Community</h1>
+            <h1 className="h1-title" id="community">
+              Community
+            </h1>
             <p className="mb-0">
               Join 4745 members of the Chia farm community from 53 countries!
             </p>
@@ -355,6 +367,26 @@ const Community = () => {
 };
 
 const Modal = () => {
+  const [isCopied, setCopied] = React.useState();
+  const [wallet, setWallet] = React.useState();
+  const [isLoading, setLoading] = React.useState();
+  const handleInput = (e) => setWallet(e.target.value);
+  const handleConnection = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 5000);
+  };
+
+  useEffect(() => {
+    const clipboard = new ClipboardJS(".clpbrd");
+
+    clipboard.on("success", function (e) {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 3000);
+    });
+  }, []);
+
   return (
     <div id="connectModal" className="modal fade">
       <div className="modal-dialog modal-fullscreen-sm-down">
@@ -372,14 +404,76 @@ const Modal = () => {
               <div className="col-12">
                 <h1 className="h1-title">Connect new&nbsp;miner</h1>
               </div>
+              <div className="col-1">
+                <span className="text-bold modal-num">1.</span>
+              </div>
+              <div className="col-11">
+                <div className="modal-text">
+                  Enter our address in Chia client
+                </div>
+                <div className="text-small text-secondary mt-2">
+                  Pool <span className="text-standard">></span> In the upper
+                  right corner of the menu
+                </div>
+                <div className="mt-3" style={{ position: "relative" }}>
+                  <input
+                    disabled
+                    className="form-control modal-input"
+                    value="https://pool.topxch.com/api/endpoint"
+                    type="text"
+                  />
+                  <button
+                    className="btn btn-green btn-sm clpbrd"
+                    style={{
+                      position: "absolute",
+                      right: "10px",
+                      top: "2px",
+                    }}
+                    data-clipboard-text="https://pool.topxch.com/api/endpoint"
+                  >
+                    {isCopied ? "Copied!" : "Copy"}
+                  </button>
+                </div>
+              </div>
+              <div className="col-1 mt-5">
+                <span className="text-bold modal-num">2.</span>
+              </div>
+              <div className="col-11 mt-5">
+                <div className="modal-text">Enter your wallet</div>
+                <input
+                  className="form-control modal-input mt-3"
+                  value={wallet}
+                  onChange={handleInput}
+                  type="text"
+                />
+              </div>
             </div>
           </div>
           <div className="modal-footer text-center">
-            <a href="#" class="btn btn-green">
-              <span style={{ lineHeight: "24px", verticalAlign: "middle" }}>
-                Check connection
-              </span>
-            </a>
+            <button
+              class="btn btn-green"
+              onClick={handleConnection}
+              disabled={!wallet}
+              style={{ position: "relative" }}
+            >
+              {isLoading
+                ? [
+                    <div
+                      style={{
+                        position: "absolute",
+                        top: "50%",
+                        left: "50%",
+                        transform: "translate(-50%, -50%)",
+                      }}
+                    >
+                      <div className="spinner-border text-light" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                      </div>
+                    </div>,
+                    <div style={{ height: "24px" }}></div>,
+                  ]
+                : "Check connection"}
+            </button>
           </div>
         </div>
       </div>
@@ -389,7 +483,7 @@ const Modal = () => {
 
 const NavBar = () => {
   const menus = [
-    { icon: "", caption: "Home", link: "#home" },
+    { icon: "", caption: "Home", link: "#home", button: false },
     {
       icon: "",
       caption: "Connect",
@@ -399,13 +493,14 @@ const NavBar = () => {
         "data-bs-target": "#connectModal",
       },
     },
-    { icon: "", caption: "Calculator", link: "#calculator" },
-    { icon: "", caption: "Community", link: "#community" },
+    { icon: "", caption: "Calculator", link: "#calculator", button: false },
+    { icon: "", caption: "Community", link: "#community", button: false },
   ];
   const activeLink = "#home";
 
   return (
     <nav
+      id="navbar"
       class="navbar fixed-bottom navbar-expand bg-white"
       style={{
         boxShadow: "0px -4px 16px rgba(21, 48, 49, 0.08)",

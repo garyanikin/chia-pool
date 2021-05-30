@@ -24,6 +24,12 @@
     "Noto Color Emoji";
 }
 
+.font-standart {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
+}
+
 .text-bold {
   font-family: "Neometric Bold";
 }
@@ -41,6 +47,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; */
+  position: relative;
 }
 
 #root {

@@ -14,7 +14,7 @@
 
 .nav-link.active {
   font-family: "Neometric Bold";
-  color: black;
+  color: black !important;
 }
 
 .h1-title {
@@ -67,8 +67,29 @@
   font-family: "Neometric Bold";
 }
 
+.btn.btn-sm {
+  width: auto;
+  padding: 4px 8px;
+}
+
 .text-green {
   color: #3aac59;
+}
+
+.modal-num {
+  font-size: 18px;
+  line-height: 22px;
+  color: #3aac59;
+}
+
+.modal-text {
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.modal-input {
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 24px;
 }
 
 /* Style range */
@@ -128,6 +149,11 @@ input[type="range"]::-moz-range-track {
 
 .community-link img {
   margin: 0 auto;
+}
+
+.modal-header,
+.modal-footer {
+  border: 0 !important;
 }
 
 /* Mobile only */
