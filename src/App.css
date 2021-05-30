@@ -17,9 +17,10 @@
   color: black;
 }
 
-.homescreen-title {
+.h1-title {
   font-size: 40px;
   line-height: 48px;
+  font-family: "Neometric Bold";
 }
 
 .card-content {
@@ -35,9 +36,31 @@
   color: rgba(0, 0, 0, 0.5);
 }
 
-.btn-green {
+.btn.btn-green {
   background: rgba(58, 172, 89, 0.8);
   color: white;
+}
+
+.card {
+  border-radius: 24px;
+  border: 0;
+}
+
+.dot {
+  border-radius: 50%;
+  width: 4px;
+  height: 4px;
+  background: #3aac59;
+  margin: 0 auto 6px;
+}
+
+.btn {
+  border-radius: 54px;
+  padding: 20px 0;
+  border: 1px solid rgba(58, 172, 89, 0.5);
+  color: #3aac59;
+  width: 100%;
+  font-family: "Neometric Bold";
 }
 
 /* Mobile only */
