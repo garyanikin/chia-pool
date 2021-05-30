@@ -6,6 +6,7 @@ function App() {
     <React.Fragment>
       <HomeScreen />
       <Advantages />
+      <ProfitCalculation />
       <NavBar />
     </React.Fragment>
   );
@@ -18,6 +19,7 @@ const HomeScreen = () => {
       style={{
         background: "rgba(58, 172, 89, 0.08)",
         paddingBottom: "40px",
+        paddingTop: "40px",
       }}
     >
       <div className="container">
@@ -50,7 +52,7 @@ const HomeScreen = () => {
                     </div>
                     <div className="col-9">
                       <div className="card-content">
-                        Enter our address in Chia client
+                        Enter our address in&nbsp;Chia&nbsp;client
                       </div>
                       <div className="card-subcontent">
                         Pool <span className="text-bold">></span> Pool address
@@ -156,7 +158,7 @@ const Advantages = () => {
   ];
 
   return (
-    <div className="container">
+    <div className="container" style={{ paddingBottom: "40px" }}>
       <h1 className="h1-title" style={{ padding: "40px 0 20px" }}>
         Our Advanteges
       </h1>
@@ -187,6 +189,29 @@ const Advantages = () => {
             ></div>
           </div>
         ))}
+      </div>
+    </div>
+  );
+};
+
+const ProfitCalculation = () => {
+  return (
+    <div
+      className="container-fluid"
+      style={{
+        background:
+          "linear-gradient(to bottom, rgba(58, 172, 89, 0.08), rgba(58, 172, 89, 0.08) 50%, #fff 50%, #fff 100%)",
+        paddingBottom: "40px",
+        paddingTop: "40px",
+      }}
+    >
+      <div className="container">
+        <h1 className="h1-title mb-0">
+          <span className="text-green">Profit</span> calculation
+        </h1>
+        <h4 className="text-bold pt-2 mb-0">Number of plots</h4>
+        <p className="text-secondary pt-1 mb-0">of size 101,4 GiB, k=32</p>
+        <input type="range" class="form-range mt-4 mb-3" id="customRange1" />
       </div>
     </div>
   );
