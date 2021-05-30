@@ -13,6 +13,37 @@
 }
 
 .nav-link.active {
-  font-weight: bold;
+  font-family: "Neometric Bold";
   color: black;
+}
+
+.homescreen-title {
+  font-size: 40px;
+  line-height: 48px;
+}
+
+.card-content {
+  font-size: 18px;
+  line-height: 22px;
+  padding-top: 32px;
+}
+
+.card-subcontent {
+  padding-top: 16px;
+  font-size: 14px;
+  line-height: 17px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.btn-green {
+  background: rgba(58, 172, 89, 0.8);
+  color: white;
+}
+
+/* Mobile only */
+@media (max-width: 768px) {
+  .homescreen-title {
+    padding-top: 40px;
+    margin-bottom: 20px;
+  }
 }

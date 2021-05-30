@@ -1,12 +1,78 @@
+import React from "react";
 import "./App.css";
 
 function App() {
   return (
-    <div className="container-fluid">
+    <React.Fragment>
+      <HomeScreen />
       <NavBar />
-    </div>
+    </React.Fragment>
   );
 }
+
+const HomeScreen = () => {
+  return (
+    <div
+      className="container-fluid"
+      style={{
+        background: "rgba(58, 172, 89, 0.08)",
+      }}
+    >
+      <div className="container">
+        <h1 className="homescreen-title text-bold mt-lg">
+          2 Simple Steps to&nbsp;Connect to&nbsp;the&nbsp;Pool
+        </h1>
+        <div className="row">
+          <div className="col-12">
+            <div className="card" style={{ overflow: "hidden" }}>
+              <div className="row">
+                <div className="col-12">
+                  <div className="row">
+                    <div
+                      className="col-3"
+                      style={{ position: "relative", height: "150px" }}
+                    >
+                      <span
+                        className="text-bold"
+                        style={{
+                          color: "rgba(58, 172, 89, 0.24)",
+                          fontSize: "200px",
+                          lineHeight: "0.65",
+                          position: "absolute",
+                          top: "-8px",
+                          left: "-8px",
+                        }}
+                      >
+                        1
+                      </span>
+                    </div>
+                    <div className="col-9">
+                      <div className="card-content">
+                        Укажите наш адрес в клиенте Chia
+                      </div>
+                      <div className="card-subcontent">
+                        Pool <span className="text-bold">></span> Pool address
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="col-12 text-center"
+                  style={{ paddingBottom: "20px" }}
+                >
+                  <a href="#" class="btn btn-altgreen">
+                    View Guide
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-12"></div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const NavBar = () => {
   const menus = [

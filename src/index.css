@@ -1,3 +1,39 @@
+@font-face {
+  font-family: "Neometric Regular";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Neometric Regular"),
+    url("./Neometric-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Neometric Bold";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Neometric Bold"),
+    url("./Neometric Alt Bold (Regular).woff") format("woff");
+}
+
+:root {
+  --bs-green: #198754;
+  --bs-teal: #20c997;
+  --bs-success: #198754;
+  --bs-font-sans-serif: "Neometric Regular", system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans",
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
+}
+
+.text-bold {
+  font-family: "Neometric Bold";
+}
+
+a:active,
+a:focus,
+a:hover {
+  color: rgba(58, 172, 89, 0.8) !important;
+}
+
 body {
   /* margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -5,10 +41,4 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; */
-}
-
-:root {
-  --bs-green: #198754;
-  --bs-teal: #20c997;
-  --bs-success: #198754;
 }
