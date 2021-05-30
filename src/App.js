@@ -177,7 +177,7 @@ const Advantages = () => {
                   src={image}
                 />
               </div>
-              <div className="col-8">{caption}</div>
+              <div className="col-8 d-flex align-items-center">{caption}</div>
             </div>
             <div
               className="col-12 d-block d-sm-block d-md-none"
@@ -195,6 +195,16 @@ const Advantages = () => {
 };
 
 const ProfitCalculation = () => {
+  const Stats = ({ caption, value, duration }) => (
+    <div className="mt-4">
+      <div style={{ color: "#3AAC59" }}>{caption}</div>
+      <div className="pt-1 d-flex align-items-center">
+        <span className="text-bold">{value}</span>
+        <span className="text-small text-secondary">&nbsp;/ {duration}</span>
+      </div>
+    </div>
+  );
+
   return (
     <div
       className="container-fluid"
@@ -212,6 +222,60 @@ const ProfitCalculation = () => {
         <h4 className="text-bold pt-2 mb-0">Number of plots</h4>
         <p className="text-secondary pt-1 mb-0">of size 101,4 GiB, k=32</p>
         <input type="range" class="form-range mt-4 mb-3" id="customRange1" />
+        <div className="row">
+          <div className="col-6"></div>
+          <div className="col-6">
+            <select class="form-select" aria-label="PiB">
+              <option selected value="1">
+                PiB
+              </option>
+              <option value="2">BiP</option>
+            </select>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-12">
+            <div className="card mt-3">
+              <div className="card-body">
+                <h4 className="text-bold pt-3 mb-2">Estimated Earings</h4>
+                <p className="text-secondary text-small mb-0">
+                  The simplifed view is based on a snapshot of today's price and
+                  a constant total network space. Use the advanced mode to
+                  simulate earings over time with netspace growth taken into
+                  account
+                </p>
+                <div className="row pb-3">
+                  <div className="col-6">
+                    <Stats
+                      caption="Hourly XCH"
+                      value="0.0285"
+                      duration="hour"
+                    />
+                    <Stats caption="Dayly XCH" value="0.6845" duration="day" />
+                    <Stats
+                      caption="Monthly XCH"
+                      value="20.8345"
+                      duration="month"
+                    />
+                  </div>
+                  <div className="col-6">
+                    <Stats
+                      caption="Hourly USD"
+                      value="$30.69"
+                      duration="hour"
+                    />
+                    <Stats caption="Dayly USD" value="$736.52" duration="day" />
+                    <Stats
+                      caption="Monthly USD"
+                      value="$22.42k"
+                      duration="month"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
