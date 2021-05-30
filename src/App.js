@@ -18,19 +18,19 @@ function App() {
 const HomeScreen = () => {
   return (
     <div
-      className="container-fluid"
+      className="container-fluid homescreen"
       style={{
         background: "rgba(58, 172, 89, 0.08)",
         paddingBottom: "40px",
-        paddingTop: "40px",
       }}
     >
+      <div className="d-none d-md-block" style={{ height: "65px" }}></div>
       <div className="container">
         <h1 className="h1-title" id="home">
           2 Simple Steps to&nbsp;Connect to&nbsp;the&nbsp;Pool
         </h1>
         <div className="row">
-          <div className="col-12">
+          <div className="col-12 col-md-5">
             <div className="card" style={{ overflow: "hidden" }}>
               <div className="row">
                 <div className="col-12">
@@ -68,7 +68,7 @@ const HomeScreen = () => {
                   className="col-12 text-center"
                   style={{ padding: "10px 24px 20px" }}
                 >
-                  <a href="#" class="btn">
+                  <a href="#" className="btn">
                     View Guide
                   </a>
                 </div>
@@ -76,7 +76,7 @@ const HomeScreen = () => {
             </div>
           </div>
           <div
-            className="col-12 d-block d-sm-block d-md-none"
+            className="col-12 col-md-2 d-md-flex flex-md-row justify-content-md-center align-items-md-center"
             style={{
               padding: "8px 0 2px",
             }}
@@ -85,7 +85,7 @@ const HomeScreen = () => {
             <div className="dot"></div>
             <div className="dot"></div>
           </div>
-          <div className="col-12">
+          <div className="col-12 col-md-5">
             <div className="card" style={{ overflow: "hidden" }}>
               <div className="row">
                 <div className="col-12">
@@ -121,7 +121,7 @@ const HomeScreen = () => {
                   style={{ padding: "10px 24px 20px" }}
                 >
                   <button
-                    class="btn btn-green"
+                    className="btn btn-green"
                     data-bs-toggle="modal"
                     data-bs-target="#connectModal"
                   >
@@ -229,7 +229,11 @@ const ProfitCalculation = () => {
         </h1>
         <h4 className="text-bold pt-2 mb-0">Number of plots</h4>
         <p className="text-secondary pt-1 mb-0">of size 101,4 GiB, k=32</p>
-        <input type="range" class="form-range mt-4 mb-3" id="customRange1" />
+        <input
+          type="range"
+          className="form-range mt-4 mb-3"
+          id="customRange1"
+        />
         <div className="row">
           <div className="col-5 d-flex align-items-center">
             <input
@@ -300,7 +304,7 @@ const ProfitCalculation = () => {
           <button
             data-bs-toggle="modal"
             data-bs-target="#connectModal"
-            class="btn btn-green"
+            className="btn btn-green"
           >
             <img
               src="/plus.png"
@@ -390,11 +394,11 @@ const Modal = () => {
   return (
     <div id="connectModal" className="modal fade">
       <div className="modal-dialog modal-fullscreen-sm-down">
-        <div class="modal-content">
-          <div class="modal-header">
+        <div className="modal-content">
+          <div className="modal-header">
             <button
               type="button"
-              class="btn-close"
+              className="btn-close"
               data-bs-dismiss="modal"
               aria-label="Close"
             ></button>
@@ -449,9 +453,9 @@ const Modal = () => {
               </div>
             </div>
           </div>
-          <div className="modal-footer text-center">
+          <div className="modal-footer text-center d-md-flex flex-md-row justify-content-md-start">
             <button
-              class="btn btn-green"
+              className="btn btn-green"
               onClick={handleConnection}
               disabled={!wallet}
               style={{ position: "relative" }}
@@ -487,6 +491,7 @@ const NavBar = () => {
     {
       icon: "",
       caption: "Connect",
+      fullCaption: "Connect Miner",
       link: null,
       button: {
         "data-bs-toggle": "modal",
@@ -496,30 +501,67 @@ const NavBar = () => {
     { icon: "", caption: "Calculator", link: "#calculator", button: false },
     { icon: "", caption: "Community", link: "#community", button: false },
   ];
-  const activeLink = "#home";
 
-  return (
+  const renderDesktop = () => (
     <nav
       id="navbar"
-      class="navbar fixed-bottom navbar-expand bg-white"
+      className="navbar navbar-expand fixed-top bg-white d-none d-md-block"
       style={{
         boxShadow: "0px -4px 16px rgba(21, 48, 49, 0.08)",
       }}
     >
-      <div class="container-fluid">
-        <ul class="navbar-nav" style={{ width: "100%" }}>
+      <div className="container">
+        <div
+          className="row justify-content-md-center"
+          style={{ width: "100%" }}
+        >
+          <div className="col-8">
+            <ul className="navbar-nav" style={{ width: "100%" }}>
+              {menus.map(
+                ({ icon, caption, fullCaption, link, button = {} }) => (
+                  <li
+                    className="nav-item text-center py-2"
+                    style={{ flex: "1 1" }}
+                  >
+                    <a
+                      className="nav-link"
+                      aria-current={fullCaption || caption}
+                      href={button ? null : link}
+                      {...button}
+                    >
+                      {fullCaption || caption}
+                    </a>
+                  </li>
+                )
+              )}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  );
+  const renderMobile = () => (
+    <nav
+      id="navbar"
+      className="navbar fixed-bottom navbar-expand bg-white d-block d-sm-block d-md-none"
+      style={{
+        boxShadow: "0px -4px 16px rgba(21, 48, 49, 0.08)",
+      }}
+    >
+      <div className="container-fluid">
+        <ul className="navbar-nav" style={{ width: "100%" }}>
           {menus.map(({ icon, caption, link, button = {} }) => (
-            <li class="nav-item text-center" style={{ flex: "1 1" }}>
+            <li className="nav-item text-center" style={{ flex: "1 1" }}>
               <a
-                class={`nav-link ${link === activeLink ? "active" : ""}`}
+                className="nav-link"
                 aria-current={caption}
                 href={button ? null : link}
                 {...button}
               >
-                <div class="col-12">
+                <div className="col-12">
                   <div className="navbar-icon">{icon}</div>
                 </div>
-                <div class="col-12 caption">{caption}</div>
+                <div className="col-12 caption">{caption}</div>
               </a>
             </li>
           ))}
@@ -527,6 +569,8 @@ const NavBar = () => {
       </div>
     </nav>
   );
+
+  return [renderDesktop(), renderMobile()];
 };
 
 export default App;

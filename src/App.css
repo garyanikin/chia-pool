@@ -1,3 +1,7 @@
+.homescreen {
+  padding-top: 80px;
+}
+
 .navbar-icon {
   width: 24px;
   height: 24px;
@@ -7,9 +11,10 @@
 }
 
 .nav-link {
-  font-size: 12px;
-  line-height: 14px;
+  font-size: 14px;
+  line-height: 17px;
   color: rgba(58, 172, 89, 0.8);
+  text-transform: uppercase;
 }
 
 .nav-link.active {
@@ -156,10 +161,44 @@ input[type="range"]::-moz-range-track {
   border: 0 !important;
 }
 
+/* Desktop only */
+@media (min-width: 768px) {
+  .homescreen .h1-title {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    margin: 0 6px;
+  }
+
+  .modal-content {
+    border-radius: 24px;
+    border: 0 !important;
+  }
+
+  .btn {
+    width: 240px;
+  }
+}
+
 /* Mobile only */
 @media (max-width: 768px) {
   .homescreen-title {
     padding-top: 40px;
     margin-bottom: 20px;
+  }
+
+  .nav-link {
+    font-size: 12px;
+    line-height: 14px;
+    color: rgba(58, 172, 89, 0.8);
+    text-transform: none;
+  }
+
+  .homescreen {
+    padding-top: 40px;
   }
 }
