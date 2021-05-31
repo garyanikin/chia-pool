@@ -1,3 +1,48 @@
+.app-loader {
+  background: #eff8f2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99999;
+  color: #153031;
+  text-align: center;
+}
+
+@keyframes attention {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(0.85);
+  }
+}
+
+.app-loader__container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.app-loader img {
+  animation-fill-mode: both;
+  animation: attention 1.8s infinite;
+}
+
+.app-loader__title {
+  font-size: 40px;
+  line-height: 48px;
+}
+
+.app-loader__subtitle {
+  font-size: 20px;
+  line-height: 24px;
+}
+
 .homescreen {
   padding-top: 80px;
 }
@@ -45,7 +90,7 @@
 .btn.btn-green:active,
 .btn.btn-green:focus,
 .btn.btn-green:hover {
-  background: rgba(58, 172, 89, 0.8);
+  background: rgb(58, 172, 89);
   color: white !important;
 }
 
@@ -271,6 +316,11 @@ input[type="range"]::-moz-range-track {
   .modal-footer {
     justify-content: stretch;
   }
+
+  .advantages img {
+    max-width: 128px;
+    max-height: 128px;
+  }
 }
 
 /* Mobile only */
@@ -293,5 +343,16 @@ input[type="range"]::-moz-range-track {
 
   .modal-footer {
     justify-content: center;
+  }
+
+  .advantages img {
+    max-width: 96px;
+    max-height: 96px;
+  }
+
+  .app-loader__subtitle {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 180px;
   }
 }

@@ -5,11 +5,13 @@ import PercentImg from "./percent.png";
 import ProfitImg from "./profit.png";
 import PlusImg from "./plus.png";
 import ShieldImg from "./shield.png";
+import CoinImg from "./coin.png";
 import refreshPlotsData from "./countProfit";
 
 function App() {
   return (
     <div>
+      <Loader />
       <HomeScreen />
       <Advantages />
       <ProfitCalculation />
@@ -19,6 +21,25 @@ function App() {
     </div>
   );
 }
+
+const Loader = () => {
+  const [isVisible, setVisible] = useState(true);
+  useEffect(() => {
+    window.onload = () => setTimeout(() => setVisible(false), 2000);
+  }, []);
+
+  return isVisible ? (
+    <div className="app-loader">
+      <div className="app-loader__container">
+        <img src={CoinImg} width="110" height="110" />
+        <div className="app-loader__title text-bold pt-4 mt-2">TopXch</div>
+        <div className="app-loader__subtitle mt-2">
+          Never still mining was so simple
+        </div>
+      </div>
+    </div>
+  ) : null;
+};
 
 const HomeScreen = () => {
   return (
@@ -184,10 +205,7 @@ const Advantages = () => {
           >
             <div className="row">
               <div className="col-4 col-md-12 text-center">
-                <img
-                  style={{ maxWidth: "96px", maxHeight: "96px" }}
-                  src={image}
-                />
+                <img src={image} />
               </div>
               <div className="col-8 col-md-12 d-flex align-items-center justify-content-md-center py-3">
                 {caption}
