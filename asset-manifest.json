@@ -1,22 +1,25 @@
 {
   "files": {
-    "main.css": "/chia-pool/static/css/main.9a93e0c1.chunk.css",
-    "main.js": "/chia-pool/static/js/main.fd8e0e99.chunk.js",
-    "main.js.map": "/chia-pool/static/js/main.fd8e0e99.chunk.js.map",
+    "main.css": "/chia-pool/static/css/main.afe91e3e.chunk.css",
+    "main.js": "/chia-pool/static/js/main.4443334e.chunk.js",
+    "main.js.map": "/chia-pool/static/js/main.4443334e.chunk.js.map",
     "runtime-main.js": "/chia-pool/static/js/runtime-main.7476b617.js",
     "runtime-main.js.map": "/chia-pool/static/js/runtime-main.7476b617.js.map",
     "static/js/2.8bcaaec7.chunk.js": "/chia-pool/static/js/2.8bcaaec7.chunk.js",
     "static/js/2.8bcaaec7.chunk.js.map": "/chia-pool/static/js/2.8bcaaec7.chunk.js.map",
     "index.html": "/chia-pool/index.html",
-    "static/css/main.9a93e0c1.chunk.css.map": "/chia-pool/static/css/main.9a93e0c1.chunk.css.map",
+    "static/css/main.afe91e3e.chunk.css.map": "/chia-pool/static/css/main.afe91e3e.chunk.css.map",
     "static/js/2.8bcaaec7.chunk.js.LICENSE.txt": "/chia-pool/static/js/2.8bcaaec7.chunk.js.LICENSE.txt",
     "static/media/index.css": "/chia-pool/static/media/Neometric-Regular.db5c2793.woff",
-    "static/media/App.css": "/chia-pool/static/media/range.09632c13.svg"
+    "static/media/percent.66047465.png": "/chia-pool/static/media/percent.66047465.png",
+    "static/media/profit.04123ebd.png": "/chia-pool/static/media/profit.04123ebd.png",
+    "static/media/App.css": "/chia-pool/static/media/range.09632c13.svg",
+    "static/media/shield.91ef4f02.png": "/chia-pool/static/media/shield.91ef4f02.png"
   },
   "entrypoints": [
     "static/js/runtime-main.7476b617.js",
     "static/js/2.8bcaaec7.chunk.js",
-    "static/css/main.9a93e0c1.chunk.css",
-    "static/js/main.fd8e0e99.chunk.js"
+    "static/css/main.afe91e3e.chunk.css",
+    "static/js/main.4443334e.chunk.js"
   ]
 }
