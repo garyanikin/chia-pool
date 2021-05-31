@@ -53,3 +53,8 @@ body {
 #root {
   padding-bottom: 75px;
 }
+
+*:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}

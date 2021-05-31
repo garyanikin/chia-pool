@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ClipboardJS from "clipboard";
 import "./App.css";
 import PercentImg from "./percent.png";
 import ProfitImg from "./profit.png";
 import PlusImg from "./plus.png";
 import ShieldImg from "./shield.png";
+import refreshPlotsData from "./countProfit";
 
 function App() {
   return (
@@ -210,8 +211,78 @@ const Advantages = () => {
 };
 
 const ProfitCalculation = () => {
+  const SPACE_TYPE = {
+    GiB: "GiB",
+    TiB: "TiB",
+    PiB: "PiB",
+  };
+  const [calculcations, setCalculations] = useState({});
+  const [isUpdating, setUpdating] = useState();
+  const [range, setRange] = useState(10);
+  const [spaceType, setSpaceType] = useState(SPACE_TYPE.GiB);
+  const [space, setSpace] = useState(0);
+  const plotSize = 101.4;
+  const spaceIndex = Object.keys(SPACE_TYPE).indexOf(spaceType);
+  const multiplier = Math.pow(1024, spaceIndex);
+  const calculateSpace = () => {
+    return (plotSize * range) / multiplier;
+  };
+  const calculateRange = () => {
+    return Math.round((space * multiplier) / plotSize);
+  };
+  const handleRangeChange = (e) => {
+    setRange(Number(e.target.value));
+  };
+  const handleSpaceChange = (e) => {
+    const value = e.target.value;
+    setUpdating("space");
+    setSpace(value);
+  };
+  const handleFinishSpaceChange = (e) => {
+    const value = Math.min(
+      Number(e.target.value),
+      (10000 * plotSize) / multiplier
+    );
+    setUpdating();
+    setSpace(value);
+  };
+  const handleTypeChange = (e) => {
+    setSpaceType(e.target.value);
+  };
+
+  useEffect(() => {
+    if (isUpdating == "range") {
+      setUpdating();
+      return;
+    }
+
+    if (!isNaN(Number(range))) {
+      setUpdating("space");
+      setSpace(calculateSpace());
+    }
+
+    setCalculations(refreshPlotsData(range));
+  }, [range]);
+  useEffect(() => {
+    if (!isNaN(range)) {
+      setUpdating("space");
+      setSpace(calculateSpace());
+    }
+  }, [spaceType]);
+  useEffect(() => {
+    if (isUpdating == "space") {
+      setUpdating();
+      return;
+    }
+
+    if (!isNaN(space)) {
+      setUpdating("range");
+      setRange(calculateRange());
+    }
+  }, [space]);
+
   const Stats = ({ caption, value, duration }) => (
-    <div className="mt-4">
+    <div className="mt-4" style={{ minWidth: "115px" }}>
       <div style={{ color: "#3AAC59" }}>{caption}</div>
       <div className="pt-1 d-flex align-items-center">
         <span className="text-bold">{value}</span>
@@ -238,27 +309,43 @@ const ProfitCalculation = () => {
           <h4 className="text-bold pt-2 mb-0">Number of plots</h4>
           <p className="text-secondary pt-1 mb-0">of size 101,4 GiB, k=32</p>
         </div>
-        <input type="range" className="form-range mt-4 mb-3" id="profitRange" />
+        <input
+          type="range"
+          min="1"
+          max="10000"
+          className="form-range mt-4 mb-3"
+          id="profitRange"
+          value={range}
+          onChange={handleRangeChange}
+        />
         <div className="row profitInput">
           <div className="col-5 d-flex align-items-center">
             <input
-              type="text"
+              type="number"
+              min="1"
+              max="10000"
               className="form-control text-bold"
-              value="5595"
+              onChange={handleRangeChange}
+              value={range}
             />
             <span className="text-small text-secondary ms-1">Plots</span>
           </div>
           <div className="col-7 d-flex">
             <input
-              type="text"
+              type="number"
+              min="0"
               className="form-control text-bold"
-              value="0,541"
+              style={{ maxWidth: "160px" }}
+              onChange={handleSpaceChange}
+              onBlur={handleFinishSpaceChange}
+              value={space.toFixed ? space.toFixed(spaceIndex + 1) : space}
             />
-            <select className="form-select  ms-1" aria-label="PiB">
-              <option selected value="1">
-                PiB
-              </option>
-              <option value="2">BiP</option>
+            <select className="form-select  ms-1" onChange={handleTypeChange}>
+              {Object.keys(SPACE_TYPE).map((type) => (
+                <option selected={type === spaceType} value={type}>
+                  {type}
+                </option>
+              ))}
             </select>
           </div>
         </div>
@@ -283,26 +370,34 @@ const ProfitCalculation = () => {
                   <div className="col-6 col-md-12 d-md-flex justify-content-md-around">
                     <Stats
                       caption="Hourly XCH"
-                      value="0.0285"
+                      value={calculcations.xchPerHour}
                       duration="hour"
                     />
-                    <Stats caption="Daily XCH" value="0.6845" duration="day" />
+                    <Stats
+                      caption="Daily XCH"
+                      value={calculcations.xchPerDay}
+                      duration="day"
+                    />
                     <Stats
                       caption="Monthly XCH"
-                      value="20.8345"
+                      value={calculcations.xchPerMonth}
                       duration="month"
                     />
                   </div>
                   <div className="col-6 col-md-12 d-md-flex justify-content-md-around">
                     <Stats
                       caption="Hourly USD"
-                      value="$30.69"
+                      value={calculcations.usdPerHour}
                       duration="hour"
                     />
-                    <Stats caption="Daily USD" value="$736.52" duration="day" />
+                    <Stats
+                      caption="Daily USD"
+                      value={calculcations.usdPerDay}
+                      duration="day"
+                    />
                     <Stats
                       caption="Monthly USD"
-                      value="$22.42k"
+                      value={calculcations.usdPerMonth}
                       duration="month"
                     />
                   </div>
