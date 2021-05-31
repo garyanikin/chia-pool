@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/chia-pool/static/css/main.7bb56a0e.chunk.css",
-    "main.js": "/chia-pool/static/js/main.dea4f173.chunk.js",
-    "main.js.map": "/chia-pool/static/js/main.dea4f173.chunk.js.map",
+    "main.css": "/chia-pool/static/css/main.4f782fe7.chunk.css",
+    "main.js": "/chia-pool/static/js/main.e6262c73.chunk.js",
+    "main.js.map": "/chia-pool/static/js/main.e6262c73.chunk.js.map",
     "runtime-main.js": "/chia-pool/static/js/runtime-main.7476b617.js",
     "runtime-main.js.map": "/chia-pool/static/js/runtime-main.7476b617.js.map",
     "static/js/2.6ac1d640.chunk.js": "/chia-pool/static/js/2.6ac1d640.chunk.js",
     "static/js/2.6ac1d640.chunk.js.map": "/chia-pool/static/js/2.6ac1d640.chunk.js.map",
     "index.html": "/chia-pool/index.html",
-    "static/css/main.7bb56a0e.chunk.css.map": "/chia-pool/static/css/main.7bb56a0e.chunk.css.map",
+    "static/css/main.4f782fe7.chunk.css.map": "/chia-pool/static/css/main.4f782fe7.chunk.css.map",
     "static/js/2.6ac1d640.chunk.js.LICENSE.txt": "/chia-pool/static/js/2.6ac1d640.chunk.js.LICENSE.txt",
     "static/media/index.css": "/chia-pool/static/media/Neometric-Regular.db5c2793.woff",
     "static/media/coin.805fdcbb.png": "/chia-pool/static/media/coin.805fdcbb.png",
@@ -20,7 +20,7 @@
   "entrypoints": [
     "static/js/runtime-main.7476b617.js",
     "static/js/2.6ac1d640.chunk.js",
-    "static/css/main.7bb56a0e.chunk.css",
-    "static/js/main.dea4f173.chunk.js"
+    "static/css/main.4f782fe7.chunk.css",
+    "static/js/main.e6262c73.chunk.js"
   ]
 }
