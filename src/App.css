@@ -8,6 +8,11 @@
   z-index: 99999;
   color: #153031;
   text-align: center;
+  transition: all 0.2s;
+}
+
+.app-loader.hide {
+  opacity: 0;
 }
 
 @keyframes attention {

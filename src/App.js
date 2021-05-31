@@ -24,12 +24,16 @@ function App() {
 
 const Loader = () => {
   const [isVisible, setVisible] = useState(true);
+  const [hide, setHide] = useState(false);
   useEffect(() => {
-    window.onload = () => setTimeout(() => setVisible(false), 2000);
+    window.onload = () => {
+      setTimeout(() => setVisible(false), 2000);
+      setTimeout(() => setHide(true), 2200);
+    };
   }, []);
 
-  return isVisible ? (
-    <div className="app-loader">
+  return hide ? null : (
+    <div className={`app-loader ${!isVisible ? "hide" : ""}`}>
       <div className="app-loader__container">
         <img src={CoinImg} width="110" height="110" />
         <div className="app-loader__title text-bold pt-4 mt-2">TopXch</div>
@@ -38,7 +42,7 @@ const Loader = () => {
         </div>
       </div>
     </div>
-  ) : null;
+  );
 };
 
 const HomeScreen = () => {
