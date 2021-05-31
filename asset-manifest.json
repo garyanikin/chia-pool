@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/static/css/main.cae76628.chunk.css",
+    "main.js": "/static/js/main.fd8e0e99.chunk.js",
+    "main.js.map": "/static/js/main.fd8e0e99.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.c5a53d07.js",
+    "runtime-main.js.map": "/static/js/runtime-main.c5a53d07.js.map",
+    "static/js/2.8bcaaec7.chunk.js": "/static/js/2.8bcaaec7.chunk.js",
+    "static/js/2.8bcaaec7.chunk.js.map": "/static/js/2.8bcaaec7.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.cae76628.chunk.css.map": "/static/css/main.cae76628.chunk.css.map",
+    "static/js/2.8bcaaec7.chunk.js.LICENSE.txt": "/static/js/2.8bcaaec7.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/static/media/Neometric-Regular.db5c2793.woff",
+    "static/media/App.css": "/static/media/range.09632c13.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c5a53d07.js",
+    "static/js/2.8bcaaec7.chunk.js",
+    "static/css/main.cae76628.chunk.css",
+    "static/js/main.fd8e0e99.chunk.js"
+  ]
+}
