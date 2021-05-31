@@ -5,7 +5,7 @@ import PercentImg from "./percent.png";
 import ProfitImg from "./profit.png";
 import PlusImg from "./plus.png";
 import ShieldImg from "./shield.png";
-import CoinImg from "./coin.png";
+import CoinImg from "./coin.gif";
 import refreshPlotsData from "./countProfit";
 
 function App() {
