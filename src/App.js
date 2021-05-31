@@ -286,7 +286,7 @@ const ProfitCalculation = () => {
                       value="0.0285"
                       duration="hour"
                     />
-                    <Stats caption="Dayly XCH" value="0.6845" duration="day" />
+                    <Stats caption="Daily XCH" value="0.6845" duration="day" />
                     <Stats
                       caption="Monthly XCH"
                       value="20.8345"
@@ -299,7 +299,7 @@ const ProfitCalculation = () => {
                       value="$30.69"
                       duration="hour"
                     />
-                    <Stats caption="Dayly USD" value="$736.52" duration="day" />
+                    <Stats caption="Daily USD" value="$736.52" duration="day" />
                     <Stats
                       caption="Monthly USD"
                       value="$22.42k"
@@ -365,7 +365,7 @@ const Community = () => {
               </div>
               <div className="col-6 col-md-3">
                 <a
-                  href="#"
+                  href="https://discord.gg/aVz63cg65y"
                   className="community-link d-flex justify-content-center flex-column"
                   target="_blank"
                 >
@@ -406,7 +406,7 @@ const Modal = () => {
     <div id="connectModal" className="modal fade">
       <div className="modal-dialog modal-fullscreen-sm-down">
         <div className="modal-content">
-          <div className="modal-header">
+          <div className="modal-header pb-0">
             <button
               type="button"
               className="btn-close"
@@ -414,10 +414,10 @@ const Modal = () => {
               aria-label="Close"
             ></button>
           </div>
-          <div className="modal-body">
+          <div className="modal-body ps-md-4 px-4 pt-0">
             <div className="row">
               <div className="col-12">
-                <h1 className="h1-title">Connect new&nbsp;miner</h1>
+                <h1 className="h1-title pb-4 mb-3">Connect new&nbsp;miner</h1>
               </div>
               <div className="col-1">
                 <span className="text-bold modal-num">1.</span>
@@ -427,7 +427,7 @@ const Modal = () => {
                   Enter our address in Chia client
                 </div>
                 <div className="text-small text-secondary mt-2">
-                  Pool <span className="text-standard">></span> In the upper
+                  Pool <span className="text-standart">></span> In the upper
                   right corner of the menu
                 </div>
                 <div className="mt-3" style={{ position: "relative" }}>
@@ -464,31 +464,46 @@ const Modal = () => {
               </div>
             </div>
           </div>
-          <div className="modal-footer text-center d-md-flex flex-md-row justify-content-md-start">
-            <button
-              className="btn btn-green"
-              onClick={handleConnection}
-              disabled={!wallet}
-              style={{ position: "relative" }}
+          <div className="modal-footer px-md-4">
+            <div
+              className="row"
+              style={{
+                width: "100%",
+                marginRight: "calc(var(--bs-gutter-x)/ -2)",
+                marginLeft: "calc(var(--bs-gutter-x)/ -2)",
+              }}
             >
-              {isLoading
-                ? [
-                    <div
-                      style={{
-                        position: "absolute",
-                        top: "50%",
-                        left: "50%",
-                        transform: "translate(-50%, -50%)",
-                      }}
-                    >
-                      <div className="spinner-border text-light" role="status">
-                        <span className="visually-hidden">Loading...</span>
-                      </div>
-                    </div>,
-                    <div style={{ height: "24px" }}></div>,
-                  ]
-                : "Check connection"}
-            </button>
+              <div className="col-md-1 d-none d-md-block"></div>
+              <div className="col-12 col-md-11">
+                <button
+                  className="btn btn-green"
+                  onClick={handleConnection}
+                  disabled={!wallet}
+                  style={{ position: "relative" }}
+                >
+                  {isLoading
+                    ? [
+                        <div
+                          style={{
+                            position: "absolute",
+                            top: "50%",
+                            left: "50%",
+                            transform: "translate(-50%, -50%)",
+                          }}
+                        >
+                          <div
+                            className="spinner-border text-light"
+                            role="status"
+                          >
+                            <span className="visually-hidden">Loading...</span>
+                          </div>
+                        </div>,
+                        <div style={{ height: "24px" }}></div>,
+                      ]
+                    : "Check connection"}
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

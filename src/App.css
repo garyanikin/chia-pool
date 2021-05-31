@@ -161,6 +161,10 @@ input[type="range"]::-moz-range-track {
   border: 0 !important;
 }
 
+.container {
+  max-width: 960px !important;
+}
+
 /* Desktop only */
 @media (min-width: 768px) {
   .nav-link.active span {
@@ -245,6 +249,10 @@ input[type="range"]::-moz-range-track {
   .communityText {
     text-align: center;
   }
+
+  .modal-footer {
+    justify-content: stretch;
+  }
 }
 
 /* Mobile only */
@@ -263,5 +271,9 @@ input[type="range"]::-moz-range-track {
 
   .homescreen {
     padding-top: 40px;
+  }
+
+  .modal-footer {
+    justify-content: center;
   }
 }
