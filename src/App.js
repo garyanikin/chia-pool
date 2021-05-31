@@ -1,6 +1,10 @@
 import React, { useEffect } from "react";
 import ClipboardJS from "clipboard";
 import "./App.css";
+import PercentImg from "./percent.png";
+import ProfitImg from "./profit.png";
+import PlusImg from "./plus.png";
+import ShieldImg from "./shield.png";
 
 function App() {
   return (
@@ -24,7 +28,6 @@ const HomeScreen = () => {
         paddingBottom: "40px",
       }}
     >
-      <div className="d-none d-md-block" style={{ height: "65px" }}></div>
       <div className="container">
         <h1 className="h1-title" id="home">
           2 Simple Steps to&nbsp;Connect to&nbsp;the&nbsp;Pool
@@ -126,7 +129,7 @@ const HomeScreen = () => {
                     data-bs-target="#connectModal"
                   >
                     <img
-                      src="/plus.png"
+                      src={PlusImg}
                       style={{
                         width: "24px",
                         verticalAlign: "middle",
@@ -152,15 +155,15 @@ const HomeScreen = () => {
 const Advantages = () => {
   const advantages = [
     {
-      image: "/percent.png",
+      image: PercentImg,
       caption: "Low fee",
     },
     {
-      image: "/profit.png",
+      image: ProfitImg,
       caption: "Automatic payments every 10 min",
     },
     {
-      image: "/shield.png",
+      image: ShieldImg,
       caption: "Secured servers",
     },
   ];
@@ -171,30 +174,34 @@ const Advantages = () => {
         Our Advanteges
       </h1>
       <div className="row">
-        {advantages.map(({ image, caption }) => (
+        {advantages.map(({ image, caption }, index) => (
           <div
-            className="col-12"
+            className="col-12 col-md-4 advantages"
             style={{
               paddingTop: "10px",
             }}
           >
             <div className="row">
-              <div className="col-4">
+              <div className="col-4 col-md-12 text-center">
                 <img
                   style={{ maxWidth: "96px", maxHeight: "96px" }}
                   src={image}
                 />
               </div>
-              <div className="col-8 d-flex align-items-center">{caption}</div>
+              <div className="col-8 col-md-12 d-flex align-items-center justify-content-md-center py-3">
+                {caption}
+              </div>
             </div>
-            <div
-              className="col-12 d-block d-sm-block d-md-none"
-              style={{
-                marginTop: "10px",
-                height: "1px",
-                background: "rgba(58, 172, 89, 0.24)",
-              }}
-            ></div>
+            {index < advantages.length - 1 ? (
+              <div
+                className="col-12 d-block d-sm-block d-md-none"
+                style={{
+                  marginTop: "10px",
+                  height: "1px",
+                  background: "rgba(58, 172, 89, 0.24)",
+                }}
+              ></div>
+            ) : null}
           </div>
         ))}
       </div>
@@ -215,7 +222,7 @@ const ProfitCalculation = () => {
 
   return (
     <div
-      className="container-fluid"
+      className="container-fluid calculator-screen"
       style={{
         background:
           "linear-gradient(to bottom, rgba(58, 172, 89, 0.08), rgba(58, 172, 89, 0.08) 50%, #fff 50%, #fff 100%)",
@@ -227,14 +234,12 @@ const ProfitCalculation = () => {
         <h1 className="h1-title mb-0" id="calculator">
           <span className="text-green">Profit</span> calculation
         </h1>
-        <h4 className="text-bold pt-2 mb-0">Number of plots</h4>
-        <p className="text-secondary pt-1 mb-0">of size 101,4 GiB, k=32</p>
-        <input
-          type="range"
-          className="form-range mt-4 mb-3"
-          id="customRange1"
-        />
-        <div className="row">
+        <div>
+          <h4 className="text-bold pt-2 mb-0">Number of plots</h4>
+          <p className="text-secondary pt-1 mb-0">of size 101,4 GiB, k=32</p>
+        </div>
+        <input type="range" className="form-range mt-4 mb-3" id="profitRange" />
+        <div className="row profitInput">
           <div className="col-5 d-flex align-items-center">
             <input
               type="text"
@@ -261,15 +266,21 @@ const ProfitCalculation = () => {
           <div className="col-12">
             <div className="card mt-3">
               <div className="card-body">
-                <h4 className="text-bold pt-3 mb-2">Estimated Earings</h4>
-                <p className="text-secondary text-small mb-0">
-                  The simplifed view is based on a snapshot of today's price and
-                  a constant total network space. Use the advanced mode to
-                  simulate earings over time with netspace growth taken into
-                  account
-                </p>
-                <div className="row pb-3">
-                  <div className="col-6">
+                <div className="row align-items-center">
+                  <div className="col-12 col-md-4 col-lg-3 d-md-flex justify-content-md-center">
+                    <h4 className="text-bold pt-3 mb-2">Estimated Earings</h4>
+                  </div>
+                  <div className="col-12 col-md-8">
+                    <p className="text-secondary text-small mb-0">
+                      The simplifed view is based on a snapshot of today's price
+                      and a constant total network space. Use the advanced mode
+                      to simulate earings over time with netspace growth taken
+                      into account
+                    </p>
+                  </div>
+                </div>
+                <div className="row pb-3 ">
+                  <div className="col-6 col-md-12 d-md-flex justify-content-md-around">
                     <Stats
                       caption="Hourly XCH"
                       value="0.0285"
@@ -282,7 +293,7 @@ const ProfitCalculation = () => {
                       duration="month"
                     />
                   </div>
-                  <div className="col-6">
+                  <div className="col-6 col-md-12 d-md-flex justify-content-md-around">
                     <Stats
                       caption="Hourly USD"
                       value="$30.69"
@@ -300,14 +311,14 @@ const ProfitCalculation = () => {
             </div>
           </div>
         </div>
-        <div className="text-align mt-3">
+        <div className="text-center mt-3">
           <button
             data-bs-toggle="modal"
             data-bs-target="#connectModal"
-            className="btn btn-green"
+            className="btn btn-green profitBtn"
           >
             <img
-              src="/plus.png"
+              src={PlusImg}
               style={{
                 width: "24px",
                 verticalAlign: "middle",
@@ -333,12 +344,12 @@ const Community = () => {
             <h1 className="h1-title" id="community">
               Community
             </h1>
-            <p className="mb-0">
+            <p className="mb-0 communityText">
               Join 4745 members of the Chia farm community from 53 countries!
             </p>
-            <div className="row pt-4">
+            <div className="row pt-4 justify-content-md-center">
               <div
-                className="col-6"
+                className="col-6 col-md-3"
                 style={{
                   borderRight: "1px solid rgba(196, 196, 196, 0.2)",
                 }}
@@ -352,7 +363,7 @@ const Community = () => {
                   <div className="pt-3 text-center">Join Telegram</div>
                 </a>
               </div>
-              <div className="col-6">
+              <div className="col-6 col-md-3">
                 <a
                   href="#"
                   className="community-link d-flex justify-content-center flex-column"
@@ -529,7 +540,7 @@ const NavBar = () => {
                       href={button ? null : link}
                       {...button}
                     >
-                      {fullCaption || caption}
+                      <span>{fullCaption || caption}</span>
                     </a>
                   </li>
                 )
