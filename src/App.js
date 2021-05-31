@@ -7,6 +7,7 @@ import PlusImg from "./plus.png";
 import ShieldImg from "./shield.png";
 import CoinImg from "./coin.gif";
 import refreshPlotsData from "./countProfit";
+import whenDomReady from "when-dom-ready";
 
 function App() {
   return (
@@ -25,11 +26,12 @@ function App() {
 const Loader = () => {
   const [isVisible, setVisible] = useState(true);
   const [hide, setHide] = useState(false);
+  const handleLoaded = () => {
+    setTimeout(() => setVisible(false), 2000);
+    setTimeout(() => setHide(true), 2200);
+  };
   useEffect(() => {
-    window.onload = () => {
-      setTimeout(() => setVisible(false), 2000);
-      setTimeout(() => setHide(true), 2200);
-    };
+    whenDomReady().then(handleLoaded);
   }, []);
 
   return hide ? null : (
