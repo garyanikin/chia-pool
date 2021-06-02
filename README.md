@@ -5,7 +5,7 @@
 - ✅ range states (hover, active)
 - ✅ button states
 - ✅ input states
-- fix calculator
+- ✅ fix calculator
   - update method
   - range from 1-50-100 (1-50-10000)
 - fix modal

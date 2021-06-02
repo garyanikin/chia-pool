@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { cleanup } from "@testing-library/react";
+import React, { useEffect, useState } from "react";
 import refreshPlotsData from "./countProfit";
 
 const ProfitCalculation = ({ PlusImg }) => {
@@ -21,17 +22,15 @@ const ProfitCalculation = ({ PlusImg }) => {
   const [calculcations, setCalculations] = useState(
     refreshPlotsData(inputState.range)
   );
-  const calculateRange = () => {
-    return Math.round((inputState.space * multiplier) / plotSize);
-  };
   const hangleUpdateCalculations = () => {
-    setCalculations(refreshPlotsData(inputState.range));
+    setCalculations(refreshPlotsData(inputState.plots));
   };
   const handleTypeChange = (e) => {
     setSpaceType(e.target.value);
   };
   const formatSpace = (space) =>
     space.toFixed ? space.toFixed(spaceIndex + 1) : space;
+
   // TODO add easing
   const middleRange = 50;
   const rangeToPlots = (range) => {
@@ -50,10 +49,12 @@ const ProfitCalculation = ({ PlusImg }) => {
       return plots;
     } else {
       const currentRange = plots - middleRange;
-      return (
-        middleRange + ((maxPlots - middleRange) * currentRange) / middleRange
-      );
+      const oneUnit = (maxPlots - middleRange) / middleRange;
+      return Math.floor(middleRange + currentRange / oneUnit);
     }
+  };
+  const spaceToPlots = (space) => {
+    return Math.round((space * multiplier) / plotSize);
   };
 
   const handleInputUpdate = (e) => {
@@ -63,24 +64,46 @@ const ProfitCalculation = ({ PlusImg }) => {
       [name]: value,
     };
 
-    if (name === "range") {
+    if (name === "range" && value) {
       // update plots
       newState.plots = rangeToPlots(value);
       // update space
       newState.space = plotsToSpace(newState.plots);
-    } else if (name === "plots") {
+    } else if (name === "plots" && value) {
+      const _value = Math.min(value, maxPlots);
+      newState.plots = _value;
+
       // update range
+      newState.range = plotsToRange(_value);
       // update space
-    } else if (name === "space") {
+      newState.space = plotsToSpace(_value);
+    } else if (name === "space" && !!parseFloat(value)) {
+      const maxSpace = (plotSize * maxPlots) / multiplier;
+      const parsedValue = parseFloat(value);
+      const _value = Math.min(parsedValue, maxSpace);
+      if (parsedValue > maxSpace || parsedValue !== _value) {
+        newState.space = _value;
+      }
+
       // update range
+      newState.plots = spaceToPlots(_value);
       // update plots
+      newState.range = plotsToRange(newState.plots);
     }
 
     setInputState(newState);
   };
 
+  useEffect(() => {
+    hangleUpdateCalculations();
+  }, [inputState.plots]);
+
+  useEffect(() => {
+    setInputState({ ...inputState, space: plotsToSpace(inputState.plots) });
+  }, [spaceType]);
+
   const Stats = ({ caption, value, duration }) => (
-    <div className="mt-4" style={{ minWidth: "115px" }}>
+    <div key={caption} className="mt-4" style={{ minWidth: "115px" }}>
       <div style={{ color: "#3AAC59" }}>{caption}</div>
       <div className="pt-1 d-flex align-items-center">
         <span className="text-bold">{value}</span>
@@ -140,11 +163,13 @@ const ProfitCalculation = ({ PlusImg }) => {
               name="space"
               value={formatSpace(inputState.space)}
             />
-            <select className="form-select  ms-1" onChange={handleTypeChange}>
+            <select
+              className="form-select  ms-1"
+              value={spaceType}
+              onChange={handleTypeChange}
+            >
               {Object.keys(SPACE_TYPE).map((type) => (
-                <option selected={type === spaceType} value={type}>
-                  {type}
-                </option>
+                <option value={type}>{type}</option>
               ))}
             </select>
           </div>
