@@ -80,11 +80,15 @@
 }
 
 .btn.btn-green,
-.btn.btn-green:active,
 .btn.btn-green:focus,
-.btn.btn-green:hover {
+.btn:hover {
   background: rgb(58, 172, 89);
   color: white !important;
+}
+
+.btn:active {
+  background: #3d8b53 !important;
+  color: white;
 }
 
 .card {
@@ -133,11 +137,21 @@
 .modal-input {
   background: rgba(0, 0, 0, 0.08);
   border-radius: 24px;
+  border: 1px solid transparent !important;
+  transition: all 0.2s;
 }
 
-input[type="range"]:focus {
-  outline: none;
-  box-shadow: none;
+.modal-input[disabled] {
+  background: rgba(0, 0, 0, 0.08) !important;
+}
+
+.modal-input:hover {
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.modal-input:focus {
+  background: white !important;
+  border: 1px solid #3aac59 !important;
 }
 
 /* Style range */
@@ -163,17 +177,16 @@ input[type="range"]::-ms-thumb {
   cursor: pointer;
 }
 
+input[type="range"]:focus::-webkit-slider-thumb {
+  outline: none;
+  box-shadow: 0px 0px 0px 8px rgba(58, 172, 89, 0.12);
+  background: #3aac59 url("./range_hover.svg") no-repeat 50% 50%;
+}
 input[type="range"]:focus::-moz-range-thumb,
 input[type="range"]:focus::-ms-thumb {
   outline: none;
-  box-shadow: none;
-  background: #ffffff url("./range.svg") no-repeat 50% 50%;
-}
-
-input[type="range"]:focus::-webkit-slider-thumb {
-  outline: none;
-  box-shadow: none;
-  background: #ffffff url("./range.svg") no-repeat 50% 50%;
+  box-shadow: 0px 0px 0px 8px rgba(58, 172, 89, 0.12);
+  background: #3aac59 url("./range_hover.svg") no-repeat 50% 50%;
 }
 
 input[type="range"]::-webkit-slider-runnable-track {
