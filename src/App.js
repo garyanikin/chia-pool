@@ -6,8 +6,11 @@ import ProfitImg from "./profit.png";
 import PlusImg from "./plus.png";
 import ShieldImg from "./shield.png";
 import CoinImg from "./coin.gif";
+import DiscordImg from "./discord.svg";
+import TelegramImg from "./telegram.svg";
 import ProfitCalculation from "./ProfitCalculator";
 import whenDomReady from "when-dom-ready";
+import isMobile from "ismobilejs";
 
 function App() {
   return (
@@ -50,6 +53,7 @@ const Loader = () => {
 const HomeScreen = () => {
   return (
     <div
+      id="home"
       className="container-fluid homescreen"
       style={{
         background: "rgba(58, 172, 89, 0.08)",
@@ -57,7 +61,7 @@ const HomeScreen = () => {
       }}
     >
       <div className="container">
-        <h1 className="h1-title" id="home">
+        <h1 className="h1-title">
           2 Simple Steps to&nbsp;Connect to&nbsp;the&nbsp;Pool
         </h1>
         <div className="row">
@@ -236,13 +240,11 @@ const Advantages = () => {
 
 const Community = () => {
   return (
-    <div className="container-fluid">
+    <div className="container-fluid" id="community">
       <div className="container pb-5">
         <div className="row">
           <div className="col-12">
-            <h1 className="h1-title" id="community">
-              Community
-            </h1>
+            <h1 className="h1-title">Community</h1>
             <p className="mb-0 communityText">
               Join 4745 members of the Chia farm community from 53 countries!
             </p>
@@ -258,7 +260,7 @@ const Community = () => {
                   className="community-link d-flex justify-content-center flex-column"
                   target="_blank"
                 >
-                  <img height="40" src="./telegram.svg" />
+                  <img height="40" src={TelegramImg} />
                   <div className="pt-3 text-center">Join Telegram</div>
                 </a>
               </div>
@@ -268,7 +270,7 @@ const Community = () => {
                   className="community-link d-flex justify-content-center flex-column"
                   target="_blank"
                 >
-                  <img height="34" src="./discord.svg" />
+                  <img height="34" src={DiscordImg} />
                   <div className="pt-4 text-center">Join Discord</div>
                 </a>
               </div>
@@ -281,6 +283,7 @@ const Community = () => {
 };
 
 const Modal = () => {
+  const ENDPOINT = "https://pool.topxch.com/api/endpoint";
   const [isCopied, setCopied] = React.useState();
   const [wallet, setWallet] = React.useState();
   const [isLoading, setLoading] = React.useState();
@@ -303,7 +306,7 @@ const Modal = () => {
 
   return (
     <div id="connectModal" className="modal fade">
-      <div className="modal-dialog modal-fullscreen-sm-down">
+      <div className="modal-dialog modal-fullscreen-sm-down modal-dialog-centered">
         <div className="modal-content">
           <div className="modal-header pb-0">
             <button
@@ -333,7 +336,7 @@ const Modal = () => {
                   <input
                     disabled
                     className="form-control modal-input"
-                    value="https://pool.topxch.com/api/endpoint"
+                    value={ENDPOINT}
                     type="text"
                   />
                   <button
@@ -341,9 +344,9 @@ const Modal = () => {
                     style={{
                       position: "absolute",
                       right: "10px",
-                      top: "2px",
+                      top: "3px",
                     }}
-                    data-clipboard-text="https://pool.topxch.com/api/endpoint"
+                    data-clipboard-text={ENDPOINT}
                   >
                     {isCopied ? "Copied!" : "Copy"}
                   </button>
@@ -363,7 +366,7 @@ const Modal = () => {
               </div>
             </div>
           </div>
-          <div className="modal-footer px-md-4">
+          <div className="modal-footer px-md-4 pt-md-4">
             <div
               className="row"
               style={{
@@ -417,7 +420,7 @@ const NavBar = () => {
       icon: "",
       caption: "Connect",
       fullCaption: "Connect Miner",
-      link: null,
+      link: "#connect",
       button: {
         "data-bs-toggle": "modal",
         "data-bs-target": "#connectModal",
@@ -462,6 +465,22 @@ const NavBar = () => {
             </ul>
           </div>
         </div>
+        <div className="navbar-community d-flex">
+          <a
+            href="https://t.me/joinchat/zIGz5E00IV0wMTEy"
+            className="community-link  me-3"
+            target="_blank"
+          >
+            <img height="19" src={TelegramImg} />
+          </a>
+          <a
+            href="https://discord.gg/aVz63cg65y"
+            className="community-link ms-4"
+            target="_blank"
+          >
+            <img height="16" src={DiscordImg} />
+          </a>
+        </div>
       </div>
     </nav>
   );
@@ -495,7 +514,7 @@ const NavBar = () => {
     </nav>
   );
 
-  return [renderDesktop(), renderMobile()];
+  return isMobile(window.navigator).any ? renderMobile() : renderDesktop();
 };
 
 export default App;

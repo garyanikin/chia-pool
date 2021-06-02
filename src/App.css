@@ -240,6 +240,7 @@ input[type="range"]::-moz-range-track {
 
 .community-link img {
   margin: 0 auto;
+  transition: all 0.23s;
 }
 
 .modal-header,
@@ -340,9 +341,34 @@ input[type="range"]::-moz-range-track {
     justify-content: stretch;
   }
 
+  .modal-footer .btn {
+    padding: 15px 0;
+  }
+
   .advantages img {
     max-width: 128px;
     max-height: 128px;
+  }
+
+  .card-body {
+    padding-top: 2.5rem;
+  }
+
+  .card-body h5 {
+    padding-top: 0 !important;
+  }
+
+  .navbar-community {
+    position: absolute;
+    right: 40px;
+    top: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .community-link:hover img {
+    transform: scale(1.25);
   }
 }
 

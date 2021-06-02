@@ -1,7 +1,7 @@
-import { cleanup } from "@testing-library/react";
 import React, { useEffect, useState } from "react";
 import refreshPlotsData from "./countProfit";
 
+const RATE_API = "https://pool.topxch.com/api/rate/";
 const ProfitCalculation = ({ PlusImg }) => {
   const SPACE_TYPE = {
     GiB: "GiB",
@@ -11,6 +11,7 @@ const ProfitCalculation = ({ PlusImg }) => {
   const plotSize = 101.4;
   const rangeMin = 1;
   const maxPlots = 10000;
+  const [xchPriceUsd, setXchPriceUsd] = useState();
   const [spaceType, setSpaceType] = useState(SPACE_TYPE.GiB);
   const spaceIndex = Object.keys(SPACE_TYPE).indexOf(spaceType);
   const multiplier = Math.pow(1024, spaceIndex);
@@ -23,7 +24,7 @@ const ProfitCalculation = ({ PlusImg }) => {
     refreshPlotsData(inputState.range)
   );
   const hangleUpdateCalculations = () => {
-    setCalculations(refreshPlotsData(inputState.plots));
+    setCalculations(refreshPlotsData(inputState.plots, xchPriceUsd));
   };
   const handleTypeChange = (e) => {
     setSpaceType(e.target.value);
@@ -102,6 +103,14 @@ const ProfitCalculation = ({ PlusImg }) => {
     setInputState({ ...inputState, space: plotsToSpace(inputState.plots) });
   }, [spaceType]);
 
+  useEffect(() => {
+    fetch(RATE_API)
+      .then((response) => response.json())
+      .then(({ message: { USD } }) => {
+        setXchPriceUsd(USD);
+      });
+  }, []);
+
   const Stats = ({ caption, value, duration }) => (
     <div key={caption} className="mt-4" style={{ minWidth: "115px" }}>
       <div style={{ color: "#3AAC59" }}>{caption}</div>
@@ -114,6 +123,7 @@ const ProfitCalculation = ({ PlusImg }) => {
 
   return (
     <div
+      id="calculator"
       className="container-fluid calculator-screen"
       style={{
         background:
@@ -123,7 +133,7 @@ const ProfitCalculation = ({ PlusImg }) => {
       }}
     >
       <div className="container">
-        <h1 className="h1-title mb-0" id="calculator">
+        <h1 className="h1-title mb-0">
           <span className="text-green">Profit</span> calculation
         </h1>
         <div>
@@ -179,8 +189,8 @@ const ProfitCalculation = ({ PlusImg }) => {
             <div className="card mt-3">
               <div className="card-body">
                 <div className="row align-items-center">
-                  <div className="col-12 col-md-4 col-lg-3 d-md-flex justify-content-md-center">
-                    <h4 className="text-bold pt-3 mb-2">Estimated Earings</h4>
+                  <div className="col-12 col-md-4 col-lg-3 d-md-flex justify-content-md-center align-items-md-center">
+                    <h5 className="text-bold pt-3 mb-2">Estimated Earings</h5>
                   </div>
                   <div className="col-12 col-md-8">
                     <p className="text-secondary text-small mb-0">

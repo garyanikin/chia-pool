@@ -6,10 +6,14 @@ var blocksPerDay = secsPerDay / blockTimeAvg;
 var xchPerDay = blocksPerDay * blockReward; // in XCH
 
 // FROM API
-var networkSpace = 17415476579.706; // in GB
-var xchPriceUsd = 764.55;
+var _networkSpace = 17415476579.706; // in GB
+var _xchPriceUsd = 764.55;
 
-function refreshPlotsData(plotsCount) {
+function refreshPlotsData(
+  plotsCount,
+  xchPriceUsd = _xchPriceUsd,
+  networkSpace = _networkSpace
+) {
   var plotSize = 108.877420953;
   var usr_plotSize = plotSize * plotsCount; // in GB
 
