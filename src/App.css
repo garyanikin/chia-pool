@@ -41,11 +41,48 @@
 }
 
 .navbar-icon {
-  width: 24px;
+  width: 30px;
   height: 24px;
-  border-radius: 50%;
-  background: #eff8f2;
+  background-repeat: no-repeat;
+  background-position: center center;
   margin: 0 auto 4px;
+  transition: all 0.25s;
+}
+
+.navbar-icon.home {
+  background-size: 27px;
+  background-image: url("./home.svg");
+}
+
+.nav-link.active .navbar-icon.home {
+  background-image: url("./home_active.svg");
+}
+
+.navbar-icon.connect {
+  background-size: 24px;
+  background-image: url("./connect.svg");
+}
+
+.nav-link.active .navbar-icon.connect {
+  background-image: url("./connect_active.svg");
+}
+
+.navbar-icon.calculator {
+  background-size: 32px;
+  background-image: url("./calculator.svg");
+}
+
+.nav-link.active .navbar-icon.calculator {
+  background-image: url("./calculator_active.svg");
+}
+
+.navbar-icon.chat {
+  background-size: 30px;
+  background-image: url("./chat.svg");
+}
+
+.nav-link.active .navbar-icon.chat {
+  background-image: url("./chat_active.svg");
 }
 
 .nav-link {

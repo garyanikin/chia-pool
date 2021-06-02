@@ -415,9 +415,9 @@ const Modal = () => {
 
 const NavBar = () => {
   const menus = [
-    { icon: "", caption: "Home", link: "#home", button: false },
+    { icon: "home", caption: "Home", link: "#home", button: false },
     {
-      icon: "",
+      icon: "connect",
       caption: "Connect",
       fullCaption: "Connect Miner",
       link: "#connect",
@@ -426,8 +426,13 @@ const NavBar = () => {
         "data-bs-target": "#connectModal",
       },
     },
-    { icon: "", caption: "Calculator", link: "#calculator", button: false },
-    { icon: "", caption: "Community", link: "#community", button: false },
+    {
+      icon: "calculator",
+      caption: "Calculator",
+      link: "#calculator",
+      button: false,
+    },
+    { icon: "chat", caption: "Community", link: "#community", button: false },
   ];
 
   const renderDesktop = () => (
@@ -503,7 +508,7 @@ const NavBar = () => {
                 {...button}
               >
                 <div className="col-12">
-                  <div className="navbar-icon">{icon}</div>
+                  <div className={`navbar-icon ${icon}`}></div>
                 </div>
                 <div className="col-12 caption">{caption}</div>
               </a>
