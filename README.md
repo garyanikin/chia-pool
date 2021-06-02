@@ -13,4 +13,4 @@
 - ✅ fix modal
 - ✅ x2 advantages images
 - ✅ add community icons to desktop nav
-- add icons to mobile nav
+- ✅ add icons to mobile nav

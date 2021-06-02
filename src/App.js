@@ -366,7 +366,7 @@ const Modal = () => {
               </div>
             </div>
           </div>
-          <div className="modal-footer px-md-4 pt-md-4">
+          <div className="modal-footer px-md-4 pt-md-4 pb-md-3">
             <div
               className="row"
               style={{
