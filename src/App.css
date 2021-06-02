@@ -145,11 +145,20 @@
   background: rgba(0, 0, 0, 0.08) !important;
 }
 
-.modal-input:hover {
+input[type="text"]:hover {
   background: rgba(0, 0, 0, 0.12);
 }
 
-.modal-input:focus {
+input[type="number"] {
+  border: 1px solid transparent !important;
+}
+
+input[type="number"]:hover {
+  border: 1px solid rgba(58, 172, 89, 0.24) !important;
+}
+
+input[type="number"]:focus,
+input[type="text"]:focus {
   background: white !important;
   border: 1px solid #3aac59 !important;
 }
@@ -204,7 +213,15 @@ input[type="range"]::-moz-range-track {
 
 .form-select {
   border-radius: 24px;
-  border: 0;
+  border: 1px solid transparent;
+}
+
+.form-select:hover {
+  border: 1px solid rgba(58, 172, 89, 0.24);
+}
+
+.form-select:active {
+  border: 1px solid #3aac59;
 }
 
 .navbar > div {
