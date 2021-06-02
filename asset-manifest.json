@@ -1,23 +1,28 @@
 {
   "files": {
-    "main.css": "/chia-pool/static/css/main.5e6bcda0.chunk.css",
-    "main.js": "/chia-pool/static/js/main.331c3668.chunk.js",
-    "main.js.map": "/chia-pool/static/js/main.331c3668.chunk.js.map",
+    "main.css": "/chia-pool/static/css/main.d9538d9a.chunk.css",
+    "main.js": "/chia-pool/static/js/main.1da9a947.chunk.js",
+    "main.js.map": "/chia-pool/static/js/main.1da9a947.chunk.js.map",
     "runtime-main.js": "/chia-pool/static/js/runtime-main.7476b617.js",
     "runtime-main.js.map": "/chia-pool/static/js/runtime-main.7476b617.js.map",
-    "static/js/2.9321f4fd.chunk.js": "/chia-pool/static/js/2.9321f4fd.chunk.js",
-    "static/js/2.9321f4fd.chunk.js.map": "/chia-pool/static/js/2.9321f4fd.chunk.js.map",
+    "static/js/2.f736c9c0.chunk.js": "/chia-pool/static/js/2.f736c9c0.chunk.js",
+    "static/js/2.f736c9c0.chunk.js.map": "/chia-pool/static/js/2.f736c9c0.chunk.js.map",
     "index.html": "/chia-pool/index.html",
-    "static/css/main.5e6bcda0.chunk.css.map": "/chia-pool/static/css/main.5e6bcda0.chunk.css.map",
-    "static/js/2.9321f4fd.chunk.js.LICENSE.txt": "/chia-pool/static/js/2.9321f4fd.chunk.js.LICENSE.txt",
+    "static/css/main.d9538d9a.chunk.css.map": "/chia-pool/static/css/main.d9538d9a.chunk.css.map",
+    "static/js/2.f736c9c0.chunk.js.LICENSE.txt": "/chia-pool/static/js/2.f736c9c0.chunk.js.LICENSE.txt",
     "static/media/index.css": "/chia-pool/static/media/Neometric-Regular.db5c2793.woff",
+    "static/media/App.css": "/chia-pool/static/media/range_hover.b7f6e502.svg",
     "static/media/coin.b45c8843.gif": "/chia-pool/static/media/coin.b45c8843.gif",
-    "static/media/App.css": "/chia-pool/static/media/range.09632c13.svg"
+    "static/media/discord.2f96e52b.svg": "/chia-pool/static/media/discord.2f96e52b.svg",
+    "static/media/percent.f1a75fb7.png": "/chia-pool/static/media/percent.f1a75fb7.png",
+    "static/media/profit.9eb41654.png": "/chia-pool/static/media/profit.9eb41654.png",
+    "static/media/shield.89800f61.png": "/chia-pool/static/media/shield.89800f61.png",
+    "static/media/telegram.08b0a9eb.svg": "/chia-pool/static/media/telegram.08b0a9eb.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.7476b617.js",
-    "static/js/2.9321f4fd.chunk.js",
-    "static/css/main.5e6bcda0.chunk.css",
-    "static/js/main.331c3668.chunk.js"
+    "static/js/2.f736c9c0.chunk.js",
+    "static/css/main.d9538d9a.chunk.css",
+    "static/js/main.1da9a947.chunk.js"
   ]
 }
