@@ -223,11 +223,15 @@ input[type="range"]::-ms-thumb {
   cursor: pointer;
 }
 
+input[type="range"]:active::-webkit-slider-thumb,
 input[type="range"]:focus::-webkit-slider-thumb {
   outline: none;
   box-shadow: 0px 0px 0px 8px rgba(58, 172, 89, 0.12);
   background: #3aac59 url("./range_hover.svg") no-repeat 50% 50%;
 }
+
+input[type="range"]:active::-moz-range-thumb,
+input[type="range"]:active::-ms-thumb,
 input[type="range"]:focus::-moz-range-thumb,
 input[type="range"]:focus::-ms-thumb {
   outline: none;
