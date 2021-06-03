@@ -194,10 +194,8 @@ const ProfitCalculation = ({ PlusImg }) => {
                   </div>
                   <div className="col-12 col-md-8">
                     <p className="text-secondary text-small mb-0">
-                      The simplifed view is based on a snapshot of today's price
-                      and a constant total network space. Use the advanced mode
-                      to simulate earings over time with netspace growth taken
-                      into account
+                      View is based on a snapshot of today's price and a
+                      constant total network space.
                     </p>
                   </div>
                 </div>
