@@ -20,6 +20,7 @@ function App() {
       <Advantages />
       <ProfitCalculation PlusImg={PlusImg} />
       <Community />
+      <Footer />
       <Modal />
       <NavBar />
     </div>
@@ -521,5 +522,14 @@ const NavBar = () => {
 
   return isMobile(window.navigator).any ? renderMobile() : renderDesktop();
 };
+
+const Footer = () => (
+  <footer class="text-center pt-md-5 pb-md-4 py-4">
+    <p>
+      Chia is registered trademark by Chia Network LTD <br />
+      It isn’t official pool.
+    </p>
+  </footer>
+);
 
 export default App;
