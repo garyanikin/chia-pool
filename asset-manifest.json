@@ -1,28 +1,28 @@
 {
   "files": {
-    "main.css": "/chia-pool/static/css/main.c5c092a6.chunk.css",
-    "main.js": "/chia-pool/static/js/main.5512a42e.chunk.js",
-    "main.js.map": "/chia-pool/static/js/main.5512a42e.chunk.js.map",
-    "runtime-main.js": "/chia-pool/static/js/runtime-main.7476b617.js",
-    "runtime-main.js.map": "/chia-pool/static/js/runtime-main.7476b617.js.map",
-    "static/js/2.f736c9c0.chunk.js": "/chia-pool/static/js/2.f736c9c0.chunk.js",
-    "static/js/2.f736c9c0.chunk.js.map": "/chia-pool/static/js/2.f736c9c0.chunk.js.map",
-    "index.html": "/chia-pool/index.html",
-    "static/css/main.c5c092a6.chunk.css.map": "/chia-pool/static/css/main.c5c092a6.chunk.css.map",
-    "static/js/2.f736c9c0.chunk.js.LICENSE.txt": "/chia-pool/static/js/2.f736c9c0.chunk.js.LICENSE.txt",
-    "static/media/index.css": "/chia-pool/static/media/Neometric-Regular.db5c2793.woff",
-    "static/media/App.css": "/chia-pool/static/media/range_hover.b7f6e502.svg",
-    "static/media/coin.b45c8843.gif": "/chia-pool/static/media/coin.b45c8843.gif",
-    "static/media/discord.2f96e52b.svg": "/chia-pool/static/media/discord.2f96e52b.svg",
-    "static/media/percent.f1a75fb7.png": "/chia-pool/static/media/percent.f1a75fb7.png",
-    "static/media/profit.9eb41654.png": "/chia-pool/static/media/profit.9eb41654.png",
-    "static/media/shield.89800f61.png": "/chia-pool/static/media/shield.89800f61.png",
-    "static/media/telegram.08b0a9eb.svg": "/chia-pool/static/media/telegram.08b0a9eb.svg"
+    "main.css": "/static/css/main.c5ea35ba.chunk.css",
+    "main.js": "/static/js/main.da29861e.chunk.js",
+    "main.js.map": "/static/js/main.da29861e.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.c5a53d07.js",
+    "runtime-main.js.map": "/static/js/runtime-main.c5a53d07.js.map",
+    "static/js/2.f736c9c0.chunk.js": "/static/js/2.f736c9c0.chunk.js",
+    "static/js/2.f736c9c0.chunk.js.map": "/static/js/2.f736c9c0.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.c5ea35ba.chunk.css.map": "/static/css/main.c5ea35ba.chunk.css.map",
+    "static/js/2.f736c9c0.chunk.js.LICENSE.txt": "/static/js/2.f736c9c0.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/static/media/Neometric-Regular.db5c2793.woff",
+    "static/media/App.css": "/static/media/range_hover.b7f6e502.svg",
+    "static/media/coin.b45c8843.gif": "/static/media/coin.b45c8843.gif",
+    "static/media/discord.2f96e52b.svg": "/static/media/discord.2f96e52b.svg",
+    "static/media/percent.89e8f048.png": "/static/media/percent.89e8f048.png",
+    "static/media/profit.0ae41731.png": "/static/media/profit.0ae41731.png",
+    "static/media/shield.8b85f54f.png": "/static/media/shield.8b85f54f.png",
+    "static/media/telegram.08b0a9eb.svg": "/static/media/telegram.08b0a9eb.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.7476b617.js",
+    "static/js/runtime-main.c5a53d07.js",
     "static/js/2.f736c9c0.chunk.js",
-    "static/css/main.c5c092a6.chunk.css",
-    "static/js/main.5512a42e.chunk.js"
+    "static/css/main.c5ea35ba.chunk.css",
+    "static/js/main.da29861e.chunk.js"
   ]
 }
