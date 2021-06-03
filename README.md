@@ -2,15 +2,10 @@
 
 ## TODO
 
-- ✅ range states (hover, active)
-- ✅ button states
-- ✅ input states
-- ✅ fix calculator
-  - update method
-  - range from 1-50-100 (plots 1-50-10000)
-  - connect API
-  - fix layout
-- ✅ fix modal
-- ✅ x2 advantages images
-- ✅ add community icons to desktop nav
-- ✅ add icons to mobile nav
+- ✅ validate miner wallet address
+  - 62 chars
+  - first xch
+- fix advantages images
+- calculator API error state
+- dashboard on subdomain console.
+  https://dev.to/fredysomy/how-to-route-using-subdomain-in-react-21in

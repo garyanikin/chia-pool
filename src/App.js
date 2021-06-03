@@ -12,6 +12,14 @@ import ProfitCalculation from "./ProfitCalculator";
 import whenDomReady from "when-dom-ready";
 import isMobile from "ismobilejs";
 
+const WALLET_API =
+  "https://api.topxch.com/api/ispoolmember/?xch_address=:wallet";
+const fetchIsPoolMember = (wallet) => {
+  return fetch(WALLET_API.replace(":wallet", wallet)).then((response) =>
+    response.json()
+  );
+};
+
 function App() {
   return (
     <div>
@@ -193,7 +201,7 @@ const Advantages = () => {
     },
     {
       image: ProfitImg,
-      caption: "Automatic payments every 10 min",
+      caption: ["Automatic payments", <br />, "every 10 min"],
     },
     {
       image: ShieldImg,
@@ -204,7 +212,7 @@ const Advantages = () => {
   return (
     <div className="container" style={{ paddingBottom: "40px" }}>
       <h1 className="h1-title" style={{ padding: "40px 0 20px" }}>
-        Our Advanteges
+        Our Advantages
       </h1>
       <div className="row">
         {advantages.map(({ image, caption }, index) => (
@@ -284,16 +292,44 @@ const Community = () => {
 };
 
 const Modal = () => {
-  const ENDPOINT = "https://pool.topxch.com/api/endpoint";
+  const ENDPOINT = "https://pool.topxch.com/";
   const [isCopied, setCopied] = React.useState();
   const [wallet, setWallet] = React.useState();
   const [isLoading, setLoading] = React.useState();
-  const handleInput = (e) => setWallet(e.target.value);
+  const [isError, setError] = React.useState();
+  const [isValid, setValid] = React.useState();
+  const handleRedirectToConsole = (wallet) => {
+    console.log(wallet);
+  };
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" && isValid) {
+      handleConnection();
+    }
+  };
+  const handleInput = (e) => {
+    const { value } = e.target;
+    setWallet(value);
+    setError(false);
+    if (value.length === 62 && value.indexOf("xch") === 0) {
+      setValid(true);
+    } else {
+      setValid(false);
+    }
+  };
   const handleConnection = () => {
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 5000);
+    setError(false);
+
+    fetchIsPoolMember(wallet).then(
+      ({ status, message: { is_pool_member } }) => {
+        if (status === "success" && is_pool_member) {
+          handleRedirectToConsole(wallet);
+        } else {
+          setError(true);
+        }
+        setLoading(false);
+      }
+    );
   };
 
   useEffect(() => {
@@ -359,9 +395,14 @@ const Modal = () => {
               <div className="col-11 mt-5">
                 <div className="modal-text">Enter your wallet</div>
                 <input
-                  className="form-control modal-input mt-3"
+                  className={`form-control modal-input mt-3 ${
+                    isError ? "is-invalid" : ""
+                  }`}
                   value={wallet}
+                  disabled={isLoading}
+                  maxlength="62"
                   onChange={handleInput}
+                  onKeyDown={handleKeyDown}
                   type="text"
                 />
               </div>
@@ -381,7 +422,7 @@ const Modal = () => {
                 <button
                   className="btn btn-green"
                   onClick={handleConnection}
-                  disabled={!wallet}
+                  disabled={!isValid}
                   style={{ position: "relative" }}
                 >
                   {isLoading

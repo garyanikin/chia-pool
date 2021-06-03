@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import refreshPlotsData from "./countProfit";
 
-const RATE_API = "https://pool.topxch.com/api/rate/";
+const RATE_API = "https://api.topxch.com/api/rate/";
 const ProfitCalculation = ({ PlusImg }) => {
   const SPACE_TYPE = {
     GiB: "GiB",
